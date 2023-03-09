@@ -22,6 +22,6 @@ jobs:
       run: python -m unittest -v tests/test_persona.py
     - name: Cálculo de Cubrimiento
       id: cubrimiento
-      run:
-        #coverage run -m unittest tests/test_persona.py
+      run: |
+        coverage run -m unittest tests/test_persona.py
         coverage report -m
