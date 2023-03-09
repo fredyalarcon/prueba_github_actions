@@ -24,4 +24,8 @@ jobs:
       id: cubrimiento
       run:
         coverage run -m unittest tests/test_persona.py
+<<<<<<< HEAD
 
+=======
+        coverage report -m
+>>>>>>> 24e80f64a865013b959669f549564729f8651f95
