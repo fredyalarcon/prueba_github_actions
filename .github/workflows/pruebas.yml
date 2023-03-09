@@ -7,8 +7,8 @@ jobs:
     name: Pruebas
     runs-on: ubuntu-latest
     outputs:
-      salida1: ${{ steps.con-errores.outputs.respuesta }}
-      salida2: ${{ steps.sin-errores.outputs.respuesta }}
+      salida1: ${{ steps.conerrores.outputs.respuesta1 }}
+      salida2: ${{ steps.sinerrores.outputs.respuesta2 }}
     steps:
     - name: Checkout de repositorio
       uses: actions/checkout@v2
@@ -24,17 +24,17 @@ jobs:
       id: correr-pruebas
       run: python -m unittest -v tests/test_persona.py
     - name: Validar resultado con errores
-      id: con-errores
+      id: conerrores
       if: ${{ failure() }}
       env:
         MENSAJE_ERROR: Una o varias pruebas fallaron
-      run: echo "::set-output name=respuesta::${MENSAJE_ERROR}"
+      run: echo "::set-output name=respuesta1::${MENSAJE_ERROR}"
     - name: Validar resultado sin errores
-      id: sin-errores
-      if: ${{ success() }}
+      id: sinerrores
+      #if: ${{ success() }}
       env:
         MENSAJE_EXITO: Todas las pruebas fueron exitosas
-      run: echo "::set-output name=respuesta::${MENSAJE_EXITO}"
+      run: echo "::set-output name=respuesta2::${MENSAJE_EXITO}"
     - name: Cálculo de Cubrimiento
       id: cubrimiento
       run: |
