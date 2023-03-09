@@ -32,9 +32,9 @@ jobs:
         id: imprimir
         env:
           MI_VARIABLE: Hola mundo
-        run: |
+        run: echo "::set-output name=respuesta::${MI_VARIABLE}"
           #echo "::set-output name=respuesta::${MI_VARIABLE}"
-          echo "{respuesta}=${MI_VARIABLE}" >> $GITHUB_OUTPUT
+          #echo "{respuesta}=${MI_VARIABLE}" >> $GITHUB_OUTPUT
 
       # Runs a single command using the runners shell
       #- name: Run a one-line script
